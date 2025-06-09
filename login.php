@@ -1,26 +1,4 @@
-<?php
-session_start();
-include('../bookshop/config.php');
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-
-    $stmt = $conn->prepare("SELECT * FROM admins WHERE username = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $admin = $result->fetch_assoc();
-
-    if ($admin && password_verify($password, $admin['password'])) {
-        $_SESSION['admin'] = $admin['username'];
-        header("Location: dashboard.php");
-        exit();
-    } else {
-        $error = "Invalid username or password.";
-    }
-}
-?>
 
 <!DOCTYPE html>
 <html>
@@ -33,8 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <div class="container-fluid h-custom">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-md-9 col-lg-6 col-xl-5">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-          class="img-fluid" alt="Sample image">
+       <img src="/bbokie.jpg" alt="/bbokies.jpg">
+          <div class="p-3 mb-2 bg-danger text-white"></div>
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
         <form>

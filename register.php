@@ -1,20 +1,53 @@
 <?php
-include('../db/config.php');
+include_once('config.php');
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['username']);
-    $email = trim($_POST['email']);
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+	if(isset($_POST['submit']))
+	{
 
-    $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $username, $email, $password);
+		$emri = $_POST['emri'];
+		$username = $_POST['username'];
+		$email = $_POST['email'];
 
-    if ($stmt->execute()) {
-        header("Location: login.php");
-    } else {
-        $error = "Registration failed: " . $conn->error;
-    }
-}
+		$tempPass = $_POST['password'];
+		$password = password_hash($tempPass, PASSWORD_DEFAULT);
+
+
+
+		$tempConfirm = $_POST['confirm_password'];
+		$confirm_password = password_hash($tempConfirm, PASSWORD_DEFAULT);
+
+
+		if(empty($emri) || empty($username) || empty($email) || empty($password) || empty($confirm_password))
+		{
+			echo "You have not filled in all the fields.";
+		}
+		else
+		{
+
+			$sql = "INSERT INTO users(emri,username,email,password, confirm_password) VALUES (:emri, :username, :email, :password, :confirm_password)";
+
+			$insertSql = $conn->prepare($sql);
+			
+
+			$insertSql->bindParam(':emri', $emri);
+			$insertSql->bindParam(':username', $username);
+			$insertSql->bindParam(':email', $email);
+			$insertSql->bindParam(':password', $password);
+			$insertSql->bindParam(':confirm_password', $confirm_password);
+
+			$insertSql->execute();
+
+			header("Location: login.php");
+
+
+		}
+
+
+
+	}
+
+
+
 ?>
 
 <!DOCTYPE html>

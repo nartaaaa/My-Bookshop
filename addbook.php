@@ -1,12 +1,13 @@
 <?php
+
+
+include_once('config.php');
+
 session_start();
 if (!isset($_SESSION['admin'])) {
     header("Location: login.php");
     exit();
 }
-
-include('../bookshop/config.php');
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $_POST["title"];
     $author = $_POST["author"];
