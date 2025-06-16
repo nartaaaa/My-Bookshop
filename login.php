@@ -11,7 +11,8 @@
   <div class="container-fluid h-custom">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-md-9 col-lg-6 col-xl-5">
-       <img src="/bbokie.jpg" alt="/bbokies.jpg">
+       <img src="img/bbokie.jpg" alt="bbokies.jpg">
+       
           <div class="p-3 mb-2 bg-danger text-white"></div>
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
@@ -38,7 +39,7 @@
           
           <div data-mdb-input-init class="form-outline mb-4">
             <input type="email" id="form3Example3" class="form-control form-control-lg"
-              placeholder="Enter a valid email address" />
+              placeholder="Enter your email address" />
             <label class="form-label" for="form3Example3">Email address</label>
           </div>
 
@@ -75,7 +76,7 @@
     class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
    
     <div class="text-white mb-3 mb-md-0">
-      Copyright © 2020. All rights reserved.
+      Copyright © 2025. All rights reserved.
     </div>
    
 
